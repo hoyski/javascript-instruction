@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Value</title>
+    <script>
+        function calculateFutureValue(initInvest, monthlyInv, annInterestRate, months) {
+            let futureValue = initInvest;
+            for (let i = 1; i <= months; i++) {
+                futureValue = (futureValue + monthlyInv) * (1 + annInterestRate / 12 / 100);
+            }
+            return futureValue;
+        }
+
+        function calculate() {
+            let initInvest = parseFloat(document.getElementById("initInvest").value);
+            let monthlyInvest = parseFloat(document.getElementById("monthlyInvest").value);
+
+            console.log("Button clicked", initInvest, monthlyInvest);
+
+            let futureValue = 1200.11; 
+
+            document.getElementById("futureValue").innerText = futureValue;
+        }
+    </script>
+</head>
+
+<body>
+    Initial investment: <input type="number" id="initInvest"><br>
+    Monthly investment: <input type="number" id="monthlyInvest"><br>
+    <button onclick="calculate()">Calculate</button>
+    <br>
+    Future value: <span id="futureValue"></span>
+</body>
+
+</html>
