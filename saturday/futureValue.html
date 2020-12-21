@@ -20,7 +20,7 @@
 
             console.log("Button clicked", initInvest, monthlyInvest);
 
-            let futureValue = 1200.11; 
+            let futureValue = calculateFutureValue(initInvest, monthlyInvest, 4, 120);
 
             document.getElementById("futureValue").innerText = futureValue;
         }
