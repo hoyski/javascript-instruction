@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Future Value Calculator</title>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         // Adds a <td> with the given value to the given row
         function addTd(row, value) {
@@ -13,7 +16,6 @@
             let tdText = document.createTextNode(value);
             td.appendChild(tdText);
             row.appendChild(td);
-
         }
 
         // Adds a new row to the history table with a td for each received value
@@ -25,7 +27,8 @@
             addTd(row, annIntRate);
             addTd(row, numYears);
             addTd(row, total);
-            hist.insertBefore(row, hist.firstChild);
+            //hist.insertBefore(row, hist.firstChild);
+            hist.appendChild(row);
         }
 
         // Calculates and returns the future value from the given parameters
@@ -40,7 +43,8 @@
         // Displays the future value using the values in the input controls and records the
         // result in the history table
         function displayFutureValue() {
-            let initInvest = parseFloat(document.getElementById("initInvest").value);
+            //let initInvest = parseFloat(document.getElementById("initInvest").value);
+            let initInvest = parseFloat($("#initInvest").val());
             let monthInvest = parseFloat(document.getElementById("monthInvest").value);
             let annIntRate = parseFloat(document.getElementById("annIntRate").value);
             let numYears = parseFloat(document.getElementById("numYears").value);
@@ -58,14 +62,18 @@
 
 <body>
 
-    <label for="initInvest">Initial investment: </label><input type="number" id="initInvest"><br>
+    <div class="container">
+    <div class="row">
+        <label for="initInvest" class="col">Initial investment</label><input class="col" type="number" id="initInvest">
+    </div>
+    </div>
     <label for="monthInvest">Monthly investment: </label><input type="number" id="monthInvest"><br>
     <label for="annIntRate">Annual Interest Rate: </label><input type="number" id="annIntRate"><br>
     <label for="numYears">Num Years: </label><input type="number" id="numYears"><br>
     <button onclick="displayFutureValue()">Calculate</button>
     <div>Future Value: <span id="futureValue"></span></div>
     <br>History:<br>
-    <table>
+    <table class="table">
         <thead>
             <tr>
                 <th>Init</th>
@@ -80,6 +88,7 @@
         </tbody>
     </table>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </body>
 
 </html>
